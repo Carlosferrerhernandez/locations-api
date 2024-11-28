@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\JsonResponse;
 use App\Models\Location;
 use Exception;
+use Illuminate\Http\JsonResponse;
 
 /**
  * Handles the retrieval of locations and returns JSON responses.
@@ -16,8 +16,6 @@ class LocationController extends Controller
      *
      * Returns a JSON response with the list of locations if found,
      * or an appropriate error message and HTTP status code if not.
-     *
-     * @return JsonResponse
      */
     public function index(): JsonResponse
     {

@@ -4,29 +4,34 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ApiKeyMiddleware
 {
-    public function handle(Request $request, Closure $next)
+    /**
+     * Handle an incoming request.
+     */
+    public function handle(Request $request, Closure $next): Response
     {
-        $apiKey = config('api.key'); // Carga la API Key configurada
+        $apiKey = config('api.key');
 
-        // Verifica si no se envió la API Key
-        if (!$request->hasHeader('X-API-KEY')) {
+        if (! $request->hasHeader('X-API-KEY')) {
             return response()->json([
                 'message' => 'API Key is required',
-                'error_code' => 'API_KEY_MISSING'
+                'error_code' => 'API_KEY_MISSING',
             ], 401);
         }
 
-        // Verifica si la API Key enviada es inválida
         if ($request->header('X-API-KEY') !== $apiKey) {
             return response()->json([
                 'message' => 'Invalid API Key',
-                'error_code' => 'INVALID_API_KEY'
+                'error_code' => 'INVALID_API_KEY',
             ], 401);
         }
 
-        return $next($request);
+        /** @var Response $response */
+        $response = $next($request);
+
+        return $response;
     }
 }
