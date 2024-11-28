@@ -151,5 +151,3 @@ Si deseas contribuir al proyecto:
 ## **Licencia**
 
 Este proyecto está licenciado bajo la [MIT License](LICENSE).
-
-Con estas instrucciones, tus pruebas unitarias están completamente documentadas, junto con las configuraciones necesarias para el entorno de pruebas. Si necesitas más aclaraciones o modificaciones, ¡avísame! 🚀
