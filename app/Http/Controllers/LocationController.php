@@ -6,8 +6,19 @@ use Illuminate\Http\JsonResponse;
 use App\Models\Location;
 use Exception;
 
+/**
+ * Handles the retrieval of locations and returns JSON responses.
+ */
 class LocationController extends Controller
 {
+    /**
+     * Fetch all locations from the database.
+     *
+     * Returns a JSON response with the list of locations if found,
+     * or an appropriate error message and HTTP status code if not.
+     *
+     * @return JsonResponse
+     */
     public function index(): JsonResponse
     {
         try {
@@ -26,7 +37,7 @@ class LocationController extends Controller
             ], 200);
         } catch (Exception $e) {
             return response()->json([
-                'message' => 'An error occurred while retrieving locations',
+                'message' => 'Error retrieving locations',
                 'error' => $e->getMessage(),
             ], 500);
         }
