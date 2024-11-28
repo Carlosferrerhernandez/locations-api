@@ -1,93 +1,93 @@
 # Locations API
 
-Este proyecto es una API construida con Laravel que permite gestionar y obtener información sobre sedes (locations). A continuación, se detallan los pasos necesarios para instalar, configurar y ejecutar la aplicación, así como las pruebas correspondientes.
+This project is an API built with Laravel that allows you to manage and obtain information about locations. Below are the steps required to install, configure, and run the application, as well as the corresponding tests.
 
-## **Requisitos Previos**
-Antes de comenzar, asegúrate de tener instalado:
-- PHP 8.2 o superior
+## **Prerequisites**
+Before you begin, make sure you have installed:
+- PHP 8.2 or higher
 - Composer
-- MySQL o SQLite
-- Laravel Installer (opcional)
+- MySQL or SQLite
+- Laravel Installer (optional)
 
-## **Instalación**
+## **Installation**
 
-### **1. Clonar el repositorio**
-Clona el repositorio del proyecto en tu máquina local:
+### **1. Clone the repository**
+Clone the project repository to your local machine:
 ```bash
 git clone https://github.com/carlosferrerhernandez/locations-api.git
 cd locations-api
 ```
 
-### **2. Instalar dependencias del backend**
-Ejecuta el siguiente comando para instalar las dependencias de Laravel:
+### **2. Install backend dependencies**
+Run the following command to install the Laravel dependencies:
 ```bash
 composer install
 ```
 
-### **3. Configurar variables de entorno**
-Copia el archivo `.env.example` y renómbralo como `.env`:
+### **3. Setting Environment Variables**
+Copy the `.env.example` file and rename it to `.env`:
 ```bash
 cp .env.example .env
 ```
-Luego, ajusta las siguientes variables en el archivo `.env`:
+Then, adjust the following variables in the `.env` file:
 
-#### **Configuración de la base de datos:**
-Si usas MySQL:
+#### **Database Settings:**
+If you are using MySQL:
 ```dotenv
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=locations
 DB_USERNAME=root
-DB_PASSWORD=tu_password
+DB_PASSWORD=your_password
 ```
 
-#### **Configuración de la API Key:**
-Asegúrate de agregar tu clave API:
+#### **API Key Settings:**
+Make sure to add your API key:
 ```dotenv
-API_KEY=tu_api_key
+API_KEY=your_api_key
 ```
 
-### **4. Generar la clave de la aplicación**
-Ejecuta este comando para generar la clave única de la aplicación:
+### **4. Generate Application Key**
+Run this command to generate the unique application key:
 ```bash
 php artisan key:generate
 ```
 
-### **5. Ejecutar migraciones**
-Crea las tablas necesarias en la base de datos:
+### **5. Run Migrations**
+Create the necessary tables in the database:
 ```bash
 php artisan migrate
 ```
 
-### **6. Sembrar datos iniciales (opcional)**
-Si necesitas datos iniciales para pruebas o desarrollo, corre:
+### **6. Seed Initial Data (Optional)**
+If you need initial data for testing or development, run:
 ```bash
 php artisan db:seed
 ```
 
-## **Ejecución de la Aplicación**
+## **Running the Application**
 
-### **1. Iniciar el servidor**
-Ejecuta el siguiente comando para iniciar el servidor de desarrollo de Laravel:
+### **1. Start the Server**
+Run the following command to start the Laravel development server:
 ```bash
 php artisan serve
 ```
 
-### **2. Acceder a la API**
-La API estará disponible en: `http://127.0.0.1:8000`.
+### **2. Access the API**
+The API will be available at: `http://127.0.0.1:8000`.
 
-#### **Endpoint de prueba:**
+#### **Test Endpoint:**
 ```http
 GET /api/locations
 Headers:
-  X-API-KEY: tu_api_key
+X-API-KEY: your_api_key
 ```
 
-## **Ejecución de Pruebas**
+## **Running Tests**
 
-### **1. Configurar una base de datos de prueba**
-En el archivo `.env`, configura una base de datos separada para las pruebas. Si usas MySQL:
+### **1. Setup a Test Database**
+In the `.env` file, setup a separate database for testing. If you're using MySQL:
 ```dotenv
 APP_ENV=testing
 DB_CONNECTION=mysql
@@ -95,59 +95,59 @@ DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=locations_test
 DB_USERNAME=root
-DB_PASSWORD=tu_password
+DB_PASSWORD=your_password
 ```
 
-### **2. Ejecutar migraciones para pruebas**
-Asegúrate de ejecutar las migraciones en la base de datos de pruebas antes de correr las pruebas:
+### **2. Running migrations for testing**
+Make sure you run migrations on the test database before running the tests:
 ```bash
 php artisan migrate --database=mysql
 ```
 
-### **3. Ejecutar pruebas unitarias**
-Ejecuta las pruebas definidas en el proyecto:
+### **3. Running unit tests**
+Run the tests defined in the project:
 ```bash
 php artisan test
 ```
 
-#### **Pruebas Incluidas**
-- Verificación de que la API Key es requerida.
-- Verificación de que una API Key inválida devuelve un error.
-- Prueba de que las locaciones se devuelven correctamente.
-- Prueba de respuesta vacía cuando no hay locaciones en la base de datos.
+#### **Included Tests**
+- Verification that the API Key is required.
+- Verification that an invalid API Key returns an error.
+- Testing that locations are returned correctly.
+- Testing for empty response when there are no locations in the database.
 
-## **Comandos Útiles**
+## **Useful Commands**
 
-- **Verificar estándares de código con PHP CodeSniffer:**
-  ```bash
-  composer check:cs
-  ```
+- **Check code standards with PHP CodeSniffer:**
+```bash
+composer check:cs
+```
 
-- **Corregir problemas de estilo automáticamente:**
-  ```bash
-  composer fix:cs
-  ```
+- **Automatically fix style issues:**
+```bash
+composer fix:cs
+```
 
-- **Formatear el código con Laravel Pint:**
-  ```bash
-  composer pint
-  ```
+- **Format code with Laravel Pint:**
+```bash
+composer pint
+```
 
-- **Análisis estático con PHPStan:**
-  ```bash
-  composer analyse:phpstan
-  ```
+- **Static analysis with PHPStan:**
+```bash
+composer analyse:phpstan
+```
 
-## **Contribuciones**
+## **Contributions**
 
-Si deseas contribuir al proyecto:
-1. Crea un fork del repositorio.
-2. Crea una nueva rama para tu funcionalidad:
-   ```bash
-   git checkout -b nueva-funcionalidad
-   ```
-3. Envía un Pull Request.
+If you want to contribute to the project:
+1. Create a fork of the repository.
+2. Create a new branch for your feature:
+```bash
+git checkout -b new-feature
+```
+3. Submit a Pull Request.
 
-## **Licencia**
+## **License**
 
-Este proyecto está licenciado bajo la [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
